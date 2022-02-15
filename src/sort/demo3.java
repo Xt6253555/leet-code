@@ -7,7 +7,7 @@ public class demo3 {
     public static void main(String[] args) {
 //        int[] arr = {4,3,2,1,5,8,7,6,0,10,43,21,67,45,54};
         int[] arr = {4,1,3,2};
-        System.out.println(Arrays.toString(sortV2(arr)));
+        System.out.println(Arrays.toString(sortV3(arr)));
     }
     //交换法
     public static int[] sort(int[] arr){
@@ -40,6 +40,19 @@ public class demo3 {
             // 两种情况会跳出循环：1. 遇到一个小于或等于 currentNumber 的数字，跳出循环，currentNumber 就坐到它后面。
             // 2. 已经走到数列头部，仍然没有遇到小于或等于 currentNumber 的数字，也会跳出循环，此时 j 等于 -1，currentNumber 就坐到数列头部。
             arr[j + 1] = currentNumber;
+        }
+        return arr;
+    }
+
+    public static int[] sortV3(int[] arr){
+        for (int i = 1; i < arr.length; i++) {
+            int j = i-1;
+            int currentNumber = arr[i];
+            while (j>=0&&currentNumber<arr[j]){
+                arr[j+1] = arr[j];
+                j--;
+            }
+            arr[j+1] = currentNumber;
         }
         return arr;
     }
