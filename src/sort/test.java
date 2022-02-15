@@ -1,56 +1,42 @@
 package sort;
 
 import java.util.Arrays;
-import java.util.Stack;
 
 public class test {
     public static void main(String[] args) {
-        int[]arr = {90,84, 83, 88, 87, 61, 50, 70, 60,80,90, 80, 99};
-        sort(arr,0,arr.length-1);
+        int[]arr = {4,5,1,2,6};
+        sort(arr);
         System.out.println(Arrays.toString(arr));
 
     }
-    public static void sort(int[] arr,int start, int end){
-        start = 0;
-        end = arr.length-1;
-        Stack<Integer> stack = new Stack<>();
-        stack.push(end);
-        stack.push(start);
-        while (!stack.isEmpty()){
-            int s = stack.pop();
-            int e = stack.pop();
-            int index = partition(arr, s, e);
-            if(s<index-1){
-                stack.push(index-1);
-                stack.push(s);
-            }
-            if(index+1<e){
-                stack.push(e);
-                stack.push(index+1);
-            }
+    public static void sort(int[] arr){
+        // 建立长度为 9 的数组，下标 0~8 对应数字 1~9
+        int[] counting = new int[6];
+        // 遍历 arr 中的每个元素
+        for (int element : arr) {
+            // 将每个整数出现的次数统计到计数数组中对应下标的位置
+            counting[element - 1]++;
         }
-    }
-    //2,4,3,5,1
-    public static int partition(int[] arr,int start,int end){
-        int l = start+1;
-        int r = end;
-        int pivot = arr[start];
-        while (l<r){
-            while (l<r&&arr[l]<pivot)l++;
-            while (l<r&&arr[r]>pivot)r--;
-            if(l<r){
-                exchange(arr,l,r);
-                l++;
-                r--;
-            }
+        // 记录前面比自己小的数字的总数
+        int preCounts = 0;
+        for (int i = 0; i < counting.length; i++) {
+            int temp = counting[i];
+            // 将 counting 计算成当前数字在结果中的起始下标位置。位置 = 前面比自己小的数字的总数。
+            counting[i] = preCounts;
+            // 当前的数字比下一个数字小，累计到 preCounts 中
+            preCounts += temp;
         }
-        if(l==r&&arr[r]>=pivot)r--;
-        exchange(arr,start,r);
-        return r;
-    }
-    public static void exchange(int[] arr,int start,int end){
-        int swap = arr[start];
-        arr[start] =arr[end];
-        arr[end] = swap;
+        int[] result = new int[arr.length];
+        for (int element : arr) {
+            // counting[element - 1] 表示此元素在结果数组中的下标
+            int index = counting[element - 1];
+            result[index] = element;
+            // 更新 counting[element - 1]，指向此元素的下一个下标
+            counting[element - 1]++;
+        }
+        // 将结果赋值回 arr
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = result[i];
+        }
     }
 }
