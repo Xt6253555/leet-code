@@ -12,7 +12,6 @@ public class demo6 {
     }
     public static int[]sort(int[] arr){
         return mergerSort(arr,0,arr.length-1);
-
     }
     public static int[] mergerSort(int[] arr,int start,int end){
         if(start==end)return new int[]{arr[start]};

@@ -10,17 +10,19 @@ public class demo7 {
         System.out.println(Arrays.toString(arr));
     }
     public static void heapSort(int[] arr){
+        //构建大顶堆，获取最大值(根节点)
         buildHeap(arr);
         for (int i = arr.length - 1; i > 0; i--) {
             // 将最大值交换到数组最后
-            swap(arr, 0, i);
-            // 调整剩余数组，使其满足大顶堆
-            maxHeap(arr, 0, i);
+            swap(arr,0,i);
+            //调整剩余数组（数量i-1）
+            maxHeap(arr,0,i);
+
         }
     }
-//    用数列构建出一个大顶堆
+//    构建出一个大顶堆
     public static void buildHeap(int[]arr){
-        for (int i = arr.length/2 - 1; i >= 0; i--) {
+        for (int i = arr.length / 2 - 1; i >= 0; i--) {
             maxHeap(arr,i,arr.length);
         }
     }
@@ -34,6 +36,7 @@ public class demo7 {
         if(r<heapSize&&arr[r]>arr[largest])largest=r;
         if(largest!=i){
             swap(arr,i,largest);
+            //递归循环整个
             maxHeap(arr,largest,heapSize);
         }
     }
