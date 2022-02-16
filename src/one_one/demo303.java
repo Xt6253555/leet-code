@@ -1,5 +1,7 @@
 package one_one;
-
+//数组前缀和
+//1234
+//0 1 3 6 10
 public class demo303 {
     private int[] arr;
     public demo303(int[] nums) {
