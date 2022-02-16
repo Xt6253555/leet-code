@@ -8,11 +8,16 @@ public class demo560 {
     }
     public static int subarraySum(int[] nums, int k) {
         int sum = 0;
+        int min = 0;
         int n = nums.length;
-        int[] arr = new int[n+1];
-        for (int i = 0; i < n-1; i++) {
-            for (int j = i+1; j < n; j++) {
-                int a = arr[i]+arr[j];
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                min+=nums[i];
+                if(min==k){
+                    sum++;
+                    min=0;
+                    break;
+                }
             }
         }
         return sum;
