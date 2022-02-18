@@ -1,5 +1,5 @@
 package one_one;
-//和为K的子数组
+//和为K的子数组(前缀和)
 public class demo560 {
     //
     public static void main(String[] args) {
