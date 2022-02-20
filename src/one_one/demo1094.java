@@ -1,5 +1,5 @@
 package one_one;
-
+//拼车(差分数组)
 public class demo1094 {
     public static boolean carPooling(int[][] trips, int capacity) {
         if(trips.length==1)return trips[0][0]<=capacity;
