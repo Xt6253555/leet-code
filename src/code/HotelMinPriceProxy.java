@@ -27,7 +27,6 @@ public class HotelMinPriceProxy {
 
     }
 
-
     public static final int CROSS_CITY_FLAG = 1;
     public static final int NON_CROSS_CITY_FLAG = 0;
     public static final int ADD_BED_FLAG = 1;
