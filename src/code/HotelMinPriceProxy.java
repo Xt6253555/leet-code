@@ -2,9 +2,7 @@ package code;
 
 import one_one.ListNode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.PriorityQueue;
+import java.util.*;
 
 import static one_one.ListNode.list;
 
@@ -27,21 +25,9 @@ public class HotelMinPriceProxy {
 
     public static final int FILTER_ITEM_RELAX_SIZE = 3;
     public static void main(String[] args) {
-        int[] arr = {0,1,0,3,12};
-        moveZeroes(arr);
 
     }
-    //输入: nums = [0,1,0,3,12]
-    //输出: [1,3,12,0,0]
-    public static void moveZeroes(int[] nums) {
-        int slow = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if(nums[i]!=0){
-                nums[slow]=nums[i];
-                slow++;
-            }
-        }
-    }
+
     public static final int CROSS_CITY_FLAG = 1;
     public static final int NON_CROSS_CITY_FLAG = 0;
     public static final int ADD_BED_FLAG = 1;
