@@ -27,12 +27,44 @@ public class HotelMinPriceProxy {
     public static void main(String[] args) {
         ListNode node = new ListNode(1);
         node.next= new ListNode(2);
+
         node.next.next = new ListNode(3);
         node.next.next.next = new ListNode(4);
         node.next.next.next.next = new ListNode(5);
+        list(node);
     }
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        return headA;
+    //输入：head = [1,2,3,4,5], left = 2, right = 4
+    //输出：[1,4,3,2,5]
+    public static ListNode reverseBetween(ListNode head, int left, int right) {
+        int start = 1;
+        while (start!=left){
+            head = head.next;
+            start++;
+        }
+        Stack<ListNode> stack = new Stack<>();
+        while (start!=right+1){
+            stack.push(head);
+            head = head.next;
+            start++;
+        }
+        while (!stack.isEmpty()){
+
+        }
+        return null;
+    }
+    public static ListNode reverseList(ListNode head) {
+        Stack<ListNode> stack = new Stack<>();
+        ListNode pre = new ListNode(0);
+        ListNode cur = pre;
+        while (head!=null){
+            stack.push(head);
+            head = head.next;
+        }
+        while (!stack.isEmpty()){
+            pre.next = new ListNode(stack.pop().val);
+            pre = pre.next;
+        }
+        return cur.next;
     }
     public static final int CROSS_CITY_FLAG = 1;
     public static final int NON_CROSS_CITY_FLAG = 0;
