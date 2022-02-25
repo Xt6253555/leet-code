@@ -27,30 +27,46 @@ public class HotelMinPriceProxy {
     public static void main(String[] args) {
         ListNode node = new ListNode(1);
         node.next= new ListNode(2);
-
         node.next.next = new ListNode(3);
         node.next.next.next = new ListNode(4);
         node.next.next.next.next = new ListNode(5);
-        list(node);
+        ListNode listNode = reverseBetween(node, 2, 4);
+        list(listNode);
+//        list(node);
     }
     //输入：head = [1,2,3,4,5], left = 2, right = 4
     //输出：[1,4,3,2,5]
     public static ListNode reverseBetween(ListNode head, int left, int right) {
-        int start = 1;
-        while (start!=left){
-            head = head.next;
-            start++;
-        }
+        Queue<ListNode> slow = new LinkedList<>();
+        Queue<ListNode> fast = new LinkedList<>();
         Stack<ListNode> stack = new Stack<>();
-        while (start!=right+1){
+        for (int i = 0; i < left-1; i++) {
+            slow.add(head);
+            head = head.next;
+        }
+        for (int i = 0; i <= right - left; i++) {
             stack.push(head);
             head = head.next;
-            start++;
+        }
+        while (head!=null){
+            fast.add(head);
+            head = head.next;
+        }
+        ListNode pre = new ListNode(0);
+        ListNode cur = pre;
+        while (!slow.isEmpty()){
+            cur.next = new ListNode(slow.poll().val);
+            cur = cur.next;
         }
         while (!stack.isEmpty()){
-
+            cur.next = new ListNode(stack.pop().val);
+            cur = cur.next;
         }
-        return null;
+        while (!fast.isEmpty()){
+            cur.next = new ListNode(fast.poll().val);
+            cur = cur.next;
+        }
+        return pre.next;
     }
     public static ListNode reverseList(ListNode head) {
         Stack<ListNode> stack = new Stack<>();
