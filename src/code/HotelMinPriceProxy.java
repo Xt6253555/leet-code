@@ -25,13 +25,13 @@ public class HotelMinPriceProxy {
 
     public static final int FILTER_ITEM_RELAX_SIZE = 3;
     public static void main(String[] args) {
-        ListNode node = new ListNode(1);
-        node.next= new ListNode(2);
-        node.next.next = new ListNode(3);
-        node.next.next.next = new ListNode(4);
-        node.next.next.next.next = new ListNode(5);
-        ListNode listNode = reverseBetween(node, 2, 4);
-        list(listNode);
+//        ListNode node = new ListNode(1);
+//        node.next= new ListNode(2);
+//        node.next.next = new ListNode(3);
+//        node.next.next.next = new ListNode(4);
+//        node.next.next.next.next = new ListNode(5);
+//        ListNode listNode = reverseBetween(node, 2, 4);
+//        list(listNode);
 //        list(node);
     }
     //输入：head = [1,2,3,4,5], left = 2, right = 4
