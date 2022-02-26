@@ -4,6 +4,7 @@ import one_one.ListNode;
 
 import java.util.*;
 
+import static one_one.ListNode.length;
 import static one_one.ListNode.list;
 
 public class HotelMinPriceProxy {
@@ -25,63 +26,28 @@ public class HotelMinPriceProxy {
 
     public static final int FILTER_ITEM_RELAX_SIZE = 3;
     public static void main(String[] args) {
-//        ListNode node = new ListNode(1);
-//        node.next= new ListNode(2);
+        ListNode node = new ListNode(2);
+//        node.next= new ListNode(4);
 //        node.next.next = new ListNode(3);
-//        node.next.next.next = new ListNode(4);
-//        node.next.next.next.next = new ListNode(5);
-//        ListNode listNode = reverseBetween(node, 2, 4);
-//        list(listNode);
-//        list(node);
+//        ListNode listNode = new ListNode(5);
+//        listNode.next = new ListNode(6);
+//        listNode.next.next = new ListNode(4);
+//        list(listNode2);
     }
-    //输入：head = [1,2,3,4,5], left = 2, right = 4
-    //输出：[1,4,3,2,5]
-    public static ListNode reverseBetween(ListNode head, int left, int right) {
-        Queue<ListNode> slow = new LinkedList<>();
-        Queue<ListNode> fast = new LinkedList<>();
-        Stack<ListNode> stack = new Stack<>();
-        for (int i = 0; i < left-1; i++) {
-            slow.add(head);
-            head = head.next;
+    //1234 2
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode p1 = headA;
+        ListNode p2 = headB;
+        while (p1 != p2){
+            if(p1!=null)p1 = p1.next;
+            else p1 = headB;
+            if(p2!=null)p2 = p2.next;
+            else p2 = headA;
         }
-        for (int i = 0; i <= right - left; i++) {
-            stack.push(head);
-            head = head.next;
-        }
-        while (head!=null){
-            fast.add(head);
-            head = head.next;
-        }
-        ListNode pre = new ListNode(0);
-        ListNode cur = pre;
-        while (!slow.isEmpty()){
-            cur.next = new ListNode(slow.poll().val);
-            cur = cur.next;
-        }
-        while (!stack.isEmpty()){
-            cur.next = new ListNode(stack.pop().val);
-            cur = cur.next;
-        }
-        while (!fast.isEmpty()){
-            cur.next = new ListNode(fast.poll().val);
-            cur = cur.next;
-        }
-        return pre.next;
+        return p1;
     }
-    public static ListNode reverseList(ListNode head) {
-        Stack<ListNode> stack = new Stack<>();
-        ListNode pre = new ListNode(0);
-        ListNode cur = pre;
-        while (head!=null){
-            stack.push(head);
-            head = head.next;
-        }
-        while (!stack.isEmpty()){
-            pre.next = new ListNode(stack.pop().val);
-            pre = pre.next;
-        }
-        return cur.next;
-    }
+
+
     public static final int CROSS_CITY_FLAG = 1;
     public static final int NON_CROSS_CITY_FLAG = 0;
     public static final int ADD_BED_FLAG = 1;

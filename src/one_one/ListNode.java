@@ -12,4 +12,12 @@ public class ListNode {
             head = head.next;
         }
     }
+    public static int length(ListNode head){
+        int l = 0;
+        while (head!=null){
+            l++;
+            head = head.next;
+        }
+        return l;
+    }
 }
