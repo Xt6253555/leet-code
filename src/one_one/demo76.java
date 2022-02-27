@@ -46,8 +46,8 @@ public class demo76 {
                 s.substring(start,len+start);
     }
     public static void main(String[] args) {
-        String s = "ADOBECODEBANC";
-        String t = "ABC";
+        String s = "dcda";
+        String t = "cda";
         System.out.println(minWindow(s,t));
     }
 }

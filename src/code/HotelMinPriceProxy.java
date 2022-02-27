@@ -26,25 +26,42 @@ public class HotelMinPriceProxy {
 
     public static final int FILTER_ITEM_RELAX_SIZE = 3;
     public static void main(String[] args) {
-        ListNode node = new ListNode(2);
-//        node.next= new ListNode(4);
-//        node.next.next = new ListNode(3);
-//        ListNode listNode = new ListNode(5);
-//        listNode.next = new ListNode(6);
-//        listNode.next.next = new ListNode(4);
-//        list(listNode2);
+        System.out.println(checkInclusion("abcdxabcde","abcdeabcdx"));
     }
-    //1234 2
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        ListNode p1 = headA;
-        ListNode p2 = headB;
-        while (p1 != p2){
-            if(p1!=null)p1 = p1.next;
-            else p1 = headB;
-            if(p2!=null)p2 = p2.next;
-            else p2 = headA;
+    //输入：s1 = "ab" s2 = "eidboaoo"
+    //输出：true
+    public static boolean checkInclusion(String s1, String s2) {
+        HashMap<Character, Integer> need = new HashMap<>();
+        HashMap<Character, Integer> window = new HashMap<>();
+        for (char c : s1.toCharArray()) {
+            need.put(c,need.getOrDefault(c,0)+1);
         }
-        return p1;
+        int left = 0,right = 0;
+        int size = 0;
+        int end = Integer.MAX_VALUE;
+        while (right<s2.length()){
+            char c = s2.charAt(right);
+            right++;
+            if(need.containsKey(c)){
+                window.put(c,window.getOrDefault(c,0)+1);
+                if(window.get(c).equals(need.get(c))){
+                    size++;
+                }
+            }
+            while (size==need.size()){
+                if(right-left<end){
+                    end = right-left;
+                }
+                char d = s2.charAt(left);
+                left++;
+                if(need.containsKey(d)){
+                    if(window.get(d).equals(need.get(d)))
+                        size--;
+                    window.put(d,window.getOrDefault(d,0)-1);
+                }
+            }
+        }
+        return end == s1.length();
     }
 
 
