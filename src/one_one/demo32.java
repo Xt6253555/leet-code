@@ -2,13 +2,14 @@ package one_one;
 
 import java.util.Stack;
 
-//使括号有效的最少添加
-public class demo921 {
+//最长有效括号
+public class demo32 {
+    //输入：s = ")()())"
+    //输出：4
     public static void main(String[] args) {
-        System.out.println(minAddToMakeValid(")()())"));
+        System.out.println(longestValidParentheses("()(()"));
     }
-    //()))((
-    public static int minAddToMakeValid(String s) {
+    public static int longestValidParentheses(String s) {
         int l = 0;
         int r = 0;
         Stack<Character> stack = new Stack<>();
@@ -29,6 +30,6 @@ public class demo921 {
             stack.pop();
             r++;
         }
-        return r;
+        return s.length()+r-2*r;
     }
 }
