@@ -1,11 +1,9 @@
 package one_one;
 
-import java.util.Stack;
-
 //有效的括号字符串
 public class demo678 {
     public static void main(String[] args) {
-        String s = "";
+        String s = "(*()";
         System.out.println(check(s));
     }
     public static boolean check(String s){
