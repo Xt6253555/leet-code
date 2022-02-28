@@ -18,17 +18,10 @@ public class demo32 {
                 stack.push(c);
                 l++;
             }else{
-                if(l!=0){
-                    stack.pop();
-                    l--;
-                }else{
-                    stack.push(c);
+                if(!stack.isEmpty()){
+
                 }
             }
-        }
-        while (!stack.isEmpty()){
-            stack.pop();
-            r++;
         }
         return s.length()+r-2*r;
     }
