@@ -8,7 +8,6 @@ public class demo304 {
     private int[][] preSum;
     public demo304(int[][] matrix) {
         int m = matrix.length, n = matrix[0].length;
-        if (m == 0 || n == 0) return;
         preSum = new int[m+1][n+1];
         for (int i = 1; i <= m; i++) {
             for (int j = 1; j <= n; j++) {
