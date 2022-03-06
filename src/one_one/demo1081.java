@@ -1,7 +1,6 @@
 package one_one;
 
 import java.util.Stack;
-
 //不同字符的最小序列(类似316)
 public class demo1081 {
     public String smallestSubsequence(String s) {
