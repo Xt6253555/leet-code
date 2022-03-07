@@ -15,6 +15,7 @@ public class demo460 {
     int minFreq;
     // 记录 LFU 缓存的最大容量
     int cap;
+
     public demo460(int capacity) {
         keyToVal = new HashMap<>();
         keyToFreq = new HashMap<>();
@@ -31,9 +32,11 @@ public class demo460 {
 
     }
 
+    //次数加1(更新kf，fk)
     private void increaseFreq(int key) {
 
     }
+    //移除最少使用的key
     private void removeMinFreqKey() {
 
     }
