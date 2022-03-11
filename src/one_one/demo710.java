@@ -4,27 +4,39 @@ import java.util.*;
 
 //黑名单中的随机数
 public class demo710 {
-    //[[7, [2, 3, 5]]]
+    //[[7, [1，2, 3, 5]]]
     //[null, 0, 4, 1, 6, 1, 0, 4]
-    Map<Integer, Integer> m;
-    Random r;
-    int len;
+    Map<Integer,Integer> map;
+    int l;
+    Random random;
 
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,5};
+        demo710 demo710 = new demo710(7, arr);
+        int pick = demo710.pick();
+        System.out.println(pick);
+    }
     public demo710(int n, int[] blacklist) {
-        m = new HashMap<>();
-        r = new Random();
-        len = n - blacklist.length;//4
-        Set<Integer> set = new HashSet<>();
-        for (int i = len; i < n; i++) set.add(i);//456
-        for (int x : blacklist) set.remove(x);//46
+        map = new HashMap<>();
+        random = new Random();
+        l = n-blacklist.length;
+        HashSet<Integer> set = new HashSet<>();
+        for (int i = l; i < n; i++) {
+            set.add(i);//3456
+        }
+        for (int i : blacklist) {
+            set.remove(i);//46
+        }
         Iterator<Integer> iterator = set.iterator();
-        for (int x : blacklist)
-            if (x < len)
-                m.put(x, iterator.next());//{2,4}{3,6}
+        for (int i : blacklist) {
+            if (i<l){
+                map.put(i,iterator.next());
+            }
+        }
     }
 
     public int pick() {
-        int k = r.nextInt(len);
-        return m.getOrDefault(k, k);
+        int l = random.nextInt(this.l);
+        return map.getOrDefault(l,l);
     }
 }
