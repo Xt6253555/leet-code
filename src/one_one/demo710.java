@@ -1,6 +1,7 @@
 package one_one;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 //黑名单中的随机数
 public class demo710 {
@@ -11,10 +12,10 @@ public class demo710 {
     Random random;
 
     public static void main(String[] args) {
-        int[] arr = {1,2,3,5};
-        demo710 demo710 = new demo710(7, arr);
-        int pick = demo710.pick();
-        System.out.println(pick);
+        ConcurrentHashMap<Integer, Integer> map = new ConcurrentHashMap<>();
+//        map.put(1,null);
+        map.put(null,1);
+        System.out.println(map);
     }
     public demo710(int n, int[] blacklist) {
         map = new HashMap<>();
