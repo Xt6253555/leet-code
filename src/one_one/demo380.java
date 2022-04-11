@@ -21,10 +21,13 @@ public class demo380 {
 
     public boolean remove(int val) {
         if(!dict.containsKey(val))return false;
+        // 先拿到 val 的索引
         int last = list.get(list.size() - 1);
         int idx = dict.get(val);
+        //交换相应的元素
         list.set(idx,last);
         dict.put(last,idx);
+        //删除对应元素
         list.remove(list.size()-1);
         dict.remove(val);
         return true;
