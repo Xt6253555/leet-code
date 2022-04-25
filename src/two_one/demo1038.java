@@ -1,5 +1,5 @@
 package two_one;
-
+//二叉搜索树转累加树
 public class demo1038 {
     int sum = 0;
     public TreeNode bstToGst(TreeNode root) {
