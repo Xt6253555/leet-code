@@ -7,7 +7,6 @@ import java.util.Stack;
 public class demo5 {
     public static void main(String[] args) {
         int[] arr = {84, 83, 88, 87, 61, 50, 70, 60, 80, 99};
-//        int[] arr = {2,3,4,5,1};
         System.out.println(Arrays.toString(sort(arr)));
     }
 
@@ -48,29 +47,37 @@ public class demo5 {
         }
     }
 
-    //双指针分区，分别找比支点大的和比支点小的进行交换，直到left=right
-    public static int partition(int[] arr,int start,int end){
-        int pivot = arr[start];
-        int left = start+1;
-        int right = end;
-        while (left<right){
-            //分别找比支点大的和小的退出while
-            while (left<right&&arr[left]<pivot)left++;
-            while (left<right&&arr[right]>pivot)right--;
-            if(left<right){
-                exchange(arr,left,right);
-                left++;
-                right--;
+    static int partition(int[] nums, int lo, int hi) {
+        if (lo == hi) return lo;
+        // 将 nums[lo] 作为默认分界点 pivot
+        int pivot = nums[lo];
+        // j = hi + 1 因为 while 中会先执⾏ --
+        int i = lo, j = hi + 1;
+        while (true) {
+            // 保证 nums[lo..i] 都⼩于 pivot
+            while (nums[++i] < pivot) {
+                if (i == hi) break;
             }
+            // 保证 nums[j..hi] 都⼤于 pivot
+            while (nums[--j] > pivot) {
+                if (j == lo) break;
+            }
+            if (i >= j) break;
+            // 如果⾛到这⾥，⼀定有：
+            // nums[i] > pivot && nums[j] < pivot
+            // 所以需要交换 nums[i] 和 nums[j]，
+            // 保证 nums[lo..i] < pivot < nums[j..hi]
+            swap(nums, i, j);
         }
-        if(left==right&&arr[right]>=pivot)right--;
-        //交换支点
-        exchange(arr,start,right);
-        return right;
+        // 将 pivot 值交换到正确的位置
+        swap(nums, lo, j);
+        // 现在 nums[lo..j-1] < nums[j] < nums[j+1..hi]
+        return j;
     }
-    private static void exchange(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+    // 交换数组中的两个元素
+    static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 }
