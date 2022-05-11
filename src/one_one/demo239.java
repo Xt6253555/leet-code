@@ -9,7 +9,7 @@ import java.util.Stack;
 public class demo239 {
     public static void main(String[] args) {
         int[] arr = {1,3,-1,-3,5,3,6,7};
-        System.out.println(Arrays.toString(maxSlidingWindowV2(arr,3)));
+        System.out.println(Arrays.toString(maxSlidingWindow(arr,3)));
     }
     //输入：nums = [1,3,-1,-3,5,3,6,7], k = 3
     //输出：[3,3,5,5,6,7]
@@ -28,27 +28,6 @@ public class demo239 {
             }
             if (r - l == k - 1) {
                 res[l] = nums[queue.peekFirst()];
-                l++;
-            }
-            r++;
-        }
-        return res;
-    }
-    public static int[] maxSlidingWindowV2(int[] nums, int k){
-        if(nums==null||nums.length<2)return nums;
-        ArrayDeque<Integer> stack = new ArrayDeque<>();
-        int l=0,r =0;
-        int[] res = new int[nums.length-k+1];
-        while (r<nums.length){
-            while (!stack.isEmpty()&&nums[stack.peekLast()]<nums[r]){
-                stack.pollLast();
-            }
-            stack.addLast(r);
-            if(stack.peekFirst()<=r-k){
-                stack.pollFirst();
-            }
-            if(r-l==k-1){
-                res[l] = nums[stack.peekFirst()];
                 l++;
             }
             r++;

@@ -12,7 +12,7 @@ public class demo18 {
         if(nums.length<4)return res;
 
         for (int i = 0; i < nums.length - 3; i++) {
-            if ((long)nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 2] > target) break;
+            if ((long)nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3] > target) break;
             if (i > 0 && nums[i] == nums[i - 1]) continue;//去重
 
             for (int j = i + 1; j < nums.length - 2; j++) {
