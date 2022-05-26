@@ -1,10 +1,19 @@
 package one_one;
+
+import java.util.Arrays;
+
 //区间加法(差分数组)
 //8,5,9,6,1
 //8 6 10 7 1(1-3)
 //8,-3,4,-3,-5
 //8,-2,4,-3,-6
 public class demo370 {
+    public static void main(String[] args) {
+        int[][] arr = {{1,3,2},{2,4,3},{0,2,-2}};
+        demo370 demo370 = new demo370();
+        int[] modifiedArray = demo370.getModifiedArray(5, arr);
+        System.out.println(Arrays.toString(modifiedArray));
+    }
     public int[] getModifiedArray(int length, int[][] updates) {
         int[] arr = new int[length];
         for (int i = 0; i < updates.length; i++) {
