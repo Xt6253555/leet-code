@@ -12,7 +12,7 @@ public class demo3 {
         int left = 0;
         int right = 0;
         HashMap<Character, Integer> map = new HashMap<>();
-        while (right>s.length()){
+        while (right<s.length()){
             char c = s.charAt(right);
             right++;
             map.put(c,map.getOrDefault(c,0)+1);
