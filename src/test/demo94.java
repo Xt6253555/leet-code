@@ -1,14 +1,21 @@
 package test;
 
 import two_one.TreeNode;
-
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
 public class demo94 {
     public List<Integer> inorderTraversal(TreeNode root) {
-        return new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        inorder(root,list);
+        return list;
+    }
+
+    private void inorder(TreeNode root, List<Integer> list) {
+        if(root==null)return ;
+        inorder(root.left,list);
+        list.add(root.val);
+        inorder(root.right,list);
     }
 
 }
