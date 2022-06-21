@@ -4,6 +4,9 @@ import java.util.LinkedList;
 
 //二叉树展开为链表(迭代)
 public class demo114 {
+    public static void main(String[] args) {
+
+    }
     public void flatten(TreeNode root) {
         if(root==null)return ;
         LinkedList<TreeNode> list = new LinkedList<>();

@@ -9,16 +9,20 @@ public class demo15 {
         List<List<Integer>> list = new ArrayList<>();
         Arrays.sort(nums);
         for (int i = 0; i < nums.length-2; i++) {
-            if(i>0&&nums[i]==nums[i-1])continue;
+            if(i>0&&nums[i-1]==nums[i])continue;
             int l = i+1;
             int r = nums.length-1;
             while (l<r){
                 int sum = nums[i]+nums[l]+nums[r];
                 if(sum==0){
-                    list.add(Arrays.asList(nums[i],nums[l],nums[r]));
+                    List<Integer> arr = new ArrayList<>();
+                    arr.add(nums[i]);
+                    arr.add(nums[l]);
+                    arr.add(nums[r]);
+                    list.add(arr);
                     while (l<r&&nums[l++]==nums[l]);
                     while (l<r&&nums[r--]==nums[r]);
-                }else if (sum>0){
+                }else if(sum>0){
                     while (l<r&&nums[r--]==nums[r]);
                 }else{
                     while (l<r&&nums[l++]==nums[l]);
