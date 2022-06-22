@@ -47,32 +47,17 @@ public class demo5 {
         }
     }
 
-    static int partition(int[] nums, int lo, int hi) {
-        if (lo == hi) return lo;
-        // 将 nums[lo] 作为默认分界点 pivot
-        int pivot = nums[lo];
-        // j = hi + 1 因为 while 中会先执⾏ --
-        int i = lo, j = hi + 1;
-        while (true) {
-            // 保证 nums[lo..i] 都⼩于 pivot
-            while (nums[++i] < pivot) {
-                if (i == hi) break;
+    static int partition(int[] arr, int left, int right) {
+        // 设定基准值（pivot）
+        int index = left + 1;
+        for (int i = index; i <= right; i++) {
+            if (arr[i] < arr[left]) {
+                swap(arr, i, index);
+                index++;
             }
-            // 保证 nums[j..hi] 都⼤于 pivot
-            while (nums[--j] > pivot) {
-                if (j == lo) break;
-            }
-            if (i >= j) break;
-            // 如果⾛到这⾥，⼀定有：
-            // nums[i] > pivot && nums[j] < pivot
-            // 所以需要交换 nums[i] 和 nums[j]，
-            // 保证 nums[lo..i] < pivot < nums[j..hi]
-            swap(nums, i, j);
         }
-        // 将 pivot 值交换到正确的位置
-        swap(nums, lo, j);
-        // 现在 nums[lo..j-1] < nums[j] < nums[j+1..hi]
-        return j;
+        swap(arr, left, index - 1);
+        return index - 1;
     }
     // 交换数组中的两个元素
     static void swap(int[] nums, int i, int j) {
