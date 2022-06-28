@@ -1,32 +1,25 @@
 package test;
 
-import two_one.TreeNode;
+import java.util.LinkedList;
+import java.util.List;
 
-import java.util.*;
-
-//二叉树的右侧视图
+//全排列
 public class demo46 {
-    public List<Integer> rightSideView(TreeNode root) {
-        ArrayList<Integer> list = new ArrayList<>();
-        if(root==null)return list;
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        list.add(root.val);
-        while (!queue.isEmpty()){
-            int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                TreeNode poll = queue.poll();
-                if(i==size-1){
-                    list.add(poll.val);
-                }
-                if(poll.right!=null){
-                    queue.offer(poll.right);
-                }
-                if(poll.left!=null){
-                    queue.offer(poll.left);
-                }
-            }
+    List<List<Integer>> res = new LinkedList<>();
+    public List<List<Integer>> permute(int[] nums) {
+        LinkedList<Integer> list = new LinkedList<>();
+        backtrack(nums,list);
+        return res;
+    }
+    public void backtrack(int[] nums,LinkedList<Integer> list){
+        if(list.size()==nums.length){
+            res.add(new LinkedList<>(list));
         }
-        return list;
+        for (int i = 0; i < nums.length; i++) {
+            if(list.contains(nums[i]))continue;
+            list.add(nums[i]);
+            backtrack(nums,list);
+            list.removeLast();
+        }
     }
 }
